@@ -7,7 +7,13 @@ const instance = axios.create({
         'API-KEY': 'c0f1a5eb-1294-4635-9118-a161642e7aba'
     }
 })
-
+let config = {
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Credentials': 'true'
+    }
+};
 // api
 export const todolistsAPI = {
     getTodolists() {
@@ -41,7 +47,7 @@ export const authAPI = {
             {email, password, rememberMe, captcha})
     },
     me() {
-        return instance.get<ResponseType<GetAuthMeResponseData>>('auth/me')
+        return instance.get<ResponseType<GetAuthMeResponseData>>('auth/me', config)
     },
     logout() {
         return instance.delete<ResponseType>('auth/login')
