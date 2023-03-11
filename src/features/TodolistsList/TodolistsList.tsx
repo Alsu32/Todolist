@@ -19,12 +19,14 @@ import {Navigate} from "react-router-dom";
 
 
 export const TodolistsList: React.FC = () => {
+
     const todolists = useAppSelector<Array<TodolistDomainType>>(state => state.todolists)
     const tasks = useAppSelector<TasksStateType>(state => state.tasks)
     const isLoggedIn = useAppSelector<boolean>(state => state.auth.isLoggedIn)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
+
         if (!isLoggedIn) {
             return
         }
@@ -83,6 +85,7 @@ export const TodolistsList: React.FC = () => {
             {
                 todolists.map(tl => {
                     let allTodolistTasks = tasks[tl.id]
+                    debugger
 
                     return <Grid item key={tl.id}>
                         <Paper style={{padding: '10px'}}>

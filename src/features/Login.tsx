@@ -37,13 +37,8 @@ export const Login = () => {
         }
     });
 
-    // Функция необходима для того, чтобы вебшторм не ругался на true в JSX
-    const getTrue = () => {
-        return true
-    }
-
     if (isLoggedIn) {
-        return <Navigate to={'/'}/>
+        return <Navigate to={'/Todolist'}/>
     }
 
     return <Grid container justifyContent="center">
@@ -93,7 +88,7 @@ export const Login = () => {
     </Grid>
 
 }
-//{getTrue() && formik.errors.email  && formik.touched.email && <div style={{color: 'red'}}>ERROR</div>}
+
 // types
 type LoginFieldsType = {
     email: string
@@ -101,7 +96,11 @@ type LoginFieldsType = {
     rememberMe: boolean
 }
 
-
+//  Функция необходима для того, чтобы вебшторм не ругался на true в JSX
+//     const getTrue = () => {
+//         return true
+//     }
+//{getTrue() && formik.errors.email  && formik.touched.email && <div style={{color: 'red'}}>ERROR</div>}
 
 
 

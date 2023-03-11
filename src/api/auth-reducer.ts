@@ -24,7 +24,7 @@ export const setIsLoggedInAC = (value: boolean) => ({type: 'login/SET-IS-LOGGED-
 // thunks
 export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsType>) => {
     dispatch(setAppStatusAC('loading'))
-    authAPI.login(data.email, data.password, true, true)
+    authAPI.login(data.email, data.password, true, false)
         .then(res => {
             if (res.data.resultCode === 0) {
                 dispatch(setIsLoggedInAC(true))
@@ -40,6 +40,7 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
 export const initializeAppTC = () => (dispatch: Dispatch) => {
     authAPI.me()
         .then(res => {
+
             if (res.data.resultCode === 0) {
                 dispatch(setIsLoggedInAC(true));
                 dispatch(setIsInitializedAC(true))
